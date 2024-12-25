@@ -1,1 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Facts Generator</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f2f5;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            text-align: center;
+            padding: 2rem;
+            max-width: 800px;
+        }
+
+        h1 {
+            color: #1a237e;
+            margin-bottom: 2rem;
+        }
+
+        .fact-box {
+            background-color: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            min-height: 150px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        #fact-display {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        #generate-btn {
+            background-color: #1a237e;
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        #generate-btn:hover {
+            background-color: #283593;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 1rem;
+            }
+            
+            .fact-box {
+                padding: 1rem;
+                min-height: 120px;
+            }
+            
+            #fact-display {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Amazing Travel Facts</h1>
+        <div class="fact-box">
+            <p id="fact-display">Click the button to see a travel fact!</p>
+        </div>
+        <button id="generate-btn">Generate Fact</button>
+    </div>
+
+    <script>
+        const travelFacts = [
+            "Japan has the world's most powerful passport, allowing visa-free access to 193 countries as of 2023.",
+            "Singapore's Changi Airport has the world's tallest indoor waterfall (Rain Vortex), standing at 40 meters high.",
+            "France is the most visited country in the world, receiving approximately 90 million tourists annually.",
+            "The shortest commercial flight in the world is between Westray and Papa Westray in Scotland's Orkney Islands, lasting only 1.5 minutes.",
+            "Venice, Italy, is sinking at a rate of 1-2 millimeters per year, making it one of the most endangered tourist destinations.",
+            "The Great Wall of China isn't actually visible from space with the naked eye, contrary to popular belief.",
+            "Tourism makes up 10% of the global GDP and accounts for 1 in 10 jobs worldwide.",
+            "Vatican City is the smallest country in the world, measuring just 0.44 square kilometers (0.17 square miles).",
+            "The Dead Sea, between Israel and Jordan, is the lowest point on Earth at 423 meters (1,388 feet) below sea level.",
+            "The world's most expensive hotel room is the Royal Penthouse Suite at the President Wilson Hotel in Geneva, Switzerland, costing around $80,000 per night."
+        ];
+
+        const factDisplay = document.getElementById('fact-display');
+        const generateBtn = document.getElementById('generate-btn');
+
+        // Function to get a random fact
+        function getRandomFact() {
+            const randomIndex = Math.floor(Math.random() * travelFacts.length);
+            return travelFacts[randomIndex];
+        }
+
+        // Function to update the displayed fact
+        function displayNewFact() {
+            const fact = getRandomFact();
+            factDisplay.textContent = fact;
+        }
+
+        // Add click event listener to the button
+        generateBtn.addEventListener('click', displayNewFact);
+
+        // Display a random fact when the page loads
+        displayNewFact();
+    </script>
+</body>
+</html>
